@@ -195,6 +195,10 @@ class GoogleSitemapGeneratorStandardBuilder {
 					//Full URL to the post
 					$permalink = get_permalink($post);
 
+					// WPML Support
+					$language = apply_filters( 'wpml_element_language_code', null, array('element_id' => $post->ID, 'element_type' => $post->post_type ) );
+					$permalink = apply_filters( 'wpml_permalink', $permalink, $language );
+					
 					/**
 					 * Filters the permalink of the current post
 					 * @since 2.7.0
